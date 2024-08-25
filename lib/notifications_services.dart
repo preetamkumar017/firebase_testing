@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:math';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
@@ -57,7 +56,7 @@ class NotificationServices
 
   Future<void> showNotification(RemoteMessage message)async{
     AndroidNotificationChannel androidNotificationChannel = AndroidNotificationChannel(
-        Random.secure().nextInt(10000).toString(), 'High Importance Notification',
+        message.notification!.android!.channelId.toString(), 'High Importance Notification',
     importance: Importance.max);
     
     AndroidNotificationDetails androidNotificationDetails = AndroidNotificationDetails(
